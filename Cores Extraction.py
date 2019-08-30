@@ -4,8 +4,12 @@ import time
 from imutils import perspective as im
 import ContourInfo as cont
 
+# This code is used for creating an image pipeline for the core images
+# It takes in the masked image, finds the contours, sorts them, then extracts
+# them from the original image, and finally channels them into the pipeline.
+
 # create the image files to read in
-imageNum = 3
+imageNum = 7
 maskFile = r'C:\Users\GoldSpot_Cloudberry\OneDrive - Goldspot Discoveries Inc\Documents\Goldspot\Images\mask' + str(
     imageNum) + '.png'
 maskImg = cv.imread(maskFile)
@@ -24,7 +28,7 @@ def drawContours(image):
 
     # add all the contours whose area is greater than the given threshold
     for i in range(len(tempCont)):
-        if cv.contourArea(tempCont[i]) >= areaThres:
+        if cv.contourArea(tempCont[i]) >= 0:#areaThres:
             contours.append(tempCont[i])
 
     print("There are %d contours in this image" % (len(contours)))
